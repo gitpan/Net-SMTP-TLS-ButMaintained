@@ -1,9 +1,13 @@
-#!perl -T
+#!perl
 
-use Test::More tests => 1;
+use strict;
+use warnings;
 
-BEGIN {
-	use_ok( 'Net::SMTP::TLS::ButMaintained' );
-}
+use Test::More;
 
-diag( "Testing Net::SMTP::TLS::ButMaintained $Net::SMTP::TLS::ButMaintained::VERSION, Perl $], $^X" );
+
+
+  plan tests => 1;
+
+use_ok('Net::SMTP::TLS::ButMaintained');
+diag("Testing Net::SMTP::TLS::ButMaintained $Net::SMTP::TLS::ButMaintained::VERSION, Perl $], $^X");

@@ -1,7 +1,13 @@
 Changes
-lib/Net/SMTP/TLS/ButMaintained.pm
-Makefile.PL
-MANIFEST			This list of files
+LICENSE
+MANIFEST
 META.yml
+Makefile.PL
 README
+dist.ini
+lib/Net/SMTP/TLS/ButMaintained.pm
 t/00-load.t
+t/config.txt
+t/live.t
+t/release-pod-coverage.t
+t/release-pod-syntax.t
