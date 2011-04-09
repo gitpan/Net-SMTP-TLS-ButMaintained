@@ -2,7 +2,7 @@ NAME
     Net::SMTP::TLS::ButMaintained - An SMTP client supporting TLS and AUTH
 
 VERSION
-    version 0.13
+    version 0.14
 
 SYNOPSIS
      use Net::SMTP::TLS::ButMaintained;
