@@ -1,11 +1,14 @@
 package Net::SMTP::TLS::ButMaintained;
 
+BEGIN {
+    $Net::SMTP::TLS::ButMaintained::VERSION = '0.15';
+}
+
 # ABSTRACT: An SMTP client supporting TLS and AUTH
 
 use strict;
 use warnings;
 
-our $VERSION = '0.13_01';
 use Carp;
 
 use Net::SSLeay;
@@ -339,7 +342,7 @@ Net::SMTP::TLS::ButMaintained - An SMTP client supporting TLS and AUTH
 
 =head1 VERSION
 
-version 0.14
+version 0.15
 
 =head1 SYNOPSIS
 
