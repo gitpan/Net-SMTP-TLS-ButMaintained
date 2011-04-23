@@ -1,7 +1,7 @@
 package Net::SMTP::TLS::ButMaintained;
 
 BEGIN {
-    $Net::SMTP::TLS::ButMaintained::VERSION = '0.15';
+    $Net::SMTP::TLS::ButMaintained::VERSION = '0.16';
 }
 
 # ABSTRACT: An SMTP client supporting TLS and AUTH
@@ -187,7 +187,7 @@ sub auth_PLAIN {
     my $user = $me->{User};
     my $pass = $me->{Password};
     $me->_command(
-        sprintf( "AUTH PLAIN %S", encode_base64( "$user\0$user\0$pass", "" ) )
+        sprintf( "AUTH PLAIN %s", encode_base64( "$user\0$user\0$pass", "" ) )
     );
     my ( $num, $txt ) = $me->_response();
     if ( not $num == 235 ) {
@@ -342,7 +342,7 @@ Net::SMTP::TLS::ButMaintained - An SMTP client supporting TLS and AUTH
 
 =head1 VERSION
 
-version 0.15
+version 0.16
 
 =head1 SYNOPSIS
 

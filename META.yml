@@ -22,4 +22,4 @@ requires:
   Net::SSLeay: 0
 resources:
   repository: git://github.com/fayland/Net-SMTP-TLS.git
-version: 0.15
+version: 0.16
