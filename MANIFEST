@@ -7,7 +7,7 @@ Makefile.PL
 README
 dist.ini
 lib/Net/SMTP/TLS/ButMaintained.pm
-t/00-load.t
+t/00-compile.t
 t/config.txt
 t/live.t
 t/release-pod-coverage.t

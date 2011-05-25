@@ -2,7 +2,7 @@ NAME
     Net::SMTP::TLS::ButMaintained - An SMTP client supporting TLS and AUTH
 
 VERSION
-    version 0.16
+    version 0.17
 
 SYNOPSIS
      use Net::SMTP::TLS::ButMaintained;
@@ -95,7 +95,7 @@ AUTHORS
     *   Fayland Lam <fayland@gmail.com>
 
 COPYRIGHT AND LICENSE
-    This software is copyright (c) 2010 by Alexander Christian Westholm,
+    This software is copyright (c) 2011 by Alexander Christian Westholm,
     Fayland Lam.
 
     This is free software; you can redistribute it and/or modify it under
