@@ -1,6 +1,6 @@
 package Net::SMTP::TLS::ButMaintained;
 {
-    $Net::SMTP::TLS::ButMaintained::VERSION = '0.19';
+    $Net::SMTP::TLS::ButMaintained::VERSION = '0.20';
 }
 
 # ABSTRACT: An SMTP client supporting TLS and AUTH
@@ -110,10 +110,7 @@ sub starttls {
     if ( not $num == 220 ) {
         croak "Invalid response for STARTTLS: $num $txt\n";
     }
-    if (
-        not IO::Socket::SSL::socket_to_SSL( $me->{sock},
-            SSL_version => "TLSv1" ) )
-    {
+    if ( not IO::Socket::SSL::socket_to_SSL( $me->{sock} ) ) {
         croak "Couldn't start TLS: " . IO::Socket::SSL::errstr . "\n";
     }
     $me->hello();
@@ -343,7 +340,7 @@ Net::SMTP::TLS::ButMaintained - An SMTP client supporting TLS and AUTH
 
 =head1 VERSION
 
-version 0.19
+version 0.20
 
 =head1 SYNOPSIS
 

@@ -22,12 +22,12 @@ my %WriteMakefileArgs = (
   "PREREQ_PM" => {
     "Digest::HMAC_MD5" => 0,
     "IO::Socket::INET" => 0,
-    "IO::Socket::SSL" => "1.75",
+    "IO::Socket::SSL" => "1.76",
     "MIME::Base64" => 0,
     "Net::Cmd" => 0,
     "Net::SSLeay" => 0
   },
-  "VERSION" => "0.19",
+  "VERSION" => "0.20",
   "test" => {
     "TESTS" => "t/*.t"
   }

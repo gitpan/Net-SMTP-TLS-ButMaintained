@@ -24,7 +24,7 @@
          "requires" : {
             "Digest::HMAC_MD5" : "0",
             "IO::Socket::INET" : "0",
-            "IO::Socket::SSL" : "1.75",
+            "IO::Socket::SSL" : "1.76",
             "MIME::Base64" : "0",
             "Net::Cmd" : "0",
             "Net::SSLeay" : "0"
@@ -35,10 +35,10 @@
    "resources" : {
       "repository" : {
          "type" : "git",
-         "url" : "https://github.com/fayland/Net-SMTP-TLS.git",
+         "url" : "git://github.com/fayland/Net-SMTP-TLS.git",
          "web" : "http://github.com/fayland/Net-SMTP-TLS"
       }
    },
-   "version" : "0.19"
+   "version" : "0.20"
 }
 
