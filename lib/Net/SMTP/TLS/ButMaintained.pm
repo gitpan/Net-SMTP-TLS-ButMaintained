@@ -1,6 +1,6 @@
 package Net::SMTP::TLS::ButMaintained;
 {
-    $Net::SMTP::TLS::ButMaintained::VERSION = '0.21';
+    $Net::SMTP::TLS::ButMaintained::VERSION = '0.22';
 }
 
 # ABSTRACT: An SMTP client supporting TLS and AUTH
@@ -212,7 +212,7 @@ sub _addr {
 sub mail {
     my $me   = shift;
     my $from = shift;
-    $me->_command( "MAIL FROM: " . _addr($from) );
+    $me->_command( "MAIL FROM:" . _addr($from) );
     my ( $num, $txt ) = $me->_response();
     if ( not $num == 250 ) {
         croak "Could't set FROM: $num $txt\n";
@@ -225,7 +225,7 @@ sub recipient {
 
     my $addr;
     foreach $addr (@_) {
-        $me->_command( "RCPT TO: " . _addr($addr) );
+        $me->_command( "RCPT TO:" . _addr($addr) );
         my ( $num, $txt ) = $me->_response();
         if ( not $num == 250 ) {
             croak "Couldn't send TO <$addr>: $num $txt\n";
@@ -345,7 +345,7 @@ Net::SMTP::TLS::ButMaintained - An SMTP client supporting TLS and AUTH
 
 =head1 VERSION
 
-version 0.21
+version 0.22
 
 =head1 SYNOPSIS
 
