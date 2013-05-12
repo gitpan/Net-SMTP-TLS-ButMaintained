@@ -1,6 +1,6 @@
 package Net::SMTP::TLS::ButMaintained;
 {
-    $Net::SMTP::TLS::ButMaintained::VERSION = '0.22';
+    $Net::SMTP::TLS::ButMaintained::VERSION = '0.23';
 }
 
 # ABSTRACT: An SMTP client supporting TLS and AUTH
@@ -345,7 +345,7 @@ Net::SMTP::TLS::ButMaintained - An SMTP client supporting TLS and AUTH
 
 =head1 VERSION
 
-version 0.22
+version 0.23
 
 =head1 SYNOPSIS
 
@@ -364,6 +364,8 @@ version 0.22
  $mailer->quit;
 
 =head1 DESCRIPTION
+
+B<DEPERCATED!>, Please use L<Net::SMTPS> instead.
 
 B<Net::SMTP::TLS::ButMaintained> is forked from L<Net::SMTP::TLS>. blame C<Evan Carroll> for the idea. :)
 

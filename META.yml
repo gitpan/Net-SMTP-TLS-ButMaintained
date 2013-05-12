@@ -22,7 +22,7 @@ requires:
   Net::SSLeay: 0
 resources:
   repository: git://github.com/fayland/Net-SMTP-TLS.git
-version: 0.22
+version: 0.23
 x_contributors:
   - 'Alexander Christian Westholm <awestholm@verizon.net>'
   - 'Matt Simerson <matt@tnpi.net>'
