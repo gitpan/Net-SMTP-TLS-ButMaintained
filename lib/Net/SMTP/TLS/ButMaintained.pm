@@ -1,9 +1,10 @@
 package Net::SMTP::TLS::ButMaintained;
 {
-    $Net::SMTP::TLS::ButMaintained::VERSION = '0.23';
+  $Net::SMTP::TLS::ButMaintained::VERSION = '0.24';
 }
 
-# ABSTRACT: An SMTP client supporting TLS and AUTH
+# ABSTRACT: An SMTP client supporting TLS and AUTH (DEPRECATED, use Net::SMTPS instead)
+
 
 use strict;
 use warnings;
@@ -24,19 +25,22 @@ BEGIN {    #set up Net::SSLeay's internals
 
 sub new {
     my $pkg  = shift;
-    my $host = shift;
+    my $hosts= shift;
     my %args = @_;
-    $args{Host} = $host;
     $args{Hello} = "localhost" if not $args{Hello};
 
-    # make the non-SSL socket that will later be
-    # transformed
-    $args{sock} = new IO::Socket::INET(
-        PeerAddr => $host,
-        PeerPort => $args{Port} || 25,
-        Proto    => 'tcp',
-        Timeout  => $args{Timeout} || 5
-    ) or croak "Connect failed :$@\n";
+    # make the non-SSL socket that will later be transformed
+    $hosts = [ $hosts ] if ! 'ARRAY' eq ref $hosts;
+    my $host;
+    foreach $host (@$hosts) {
+        $args{sock} = new IO::Socket::INET(
+            PeerAddr => $host,
+            PeerPort => $args{Port} || 25,
+            Proto    => 'tcp',
+            Timeout  => $args{Timeout} || 5
+        ) and last;
+    };
+    croak "Connect failed :$@\n" if ! $args{sock};
 
     my $me = bless \%args, $pkg;
 
@@ -110,11 +114,11 @@ sub starttls {
     if ( not $num == 220 ) {
         croak "Invalid response for STARTTLS: $num $txt\n";
     }
-    if (
-        not IO::Socket::SSL::socket_to_SSL(
-            $me->{sock}, { SSL_verify_mode => IO::Socket::SSL::SSL_VERIFY_NONE }
+    if (not IO::Socket::SSL::socket_to_SSL(
+            $me->{sock},
+            { SSL_verify_mode => IO::Socket::SSL::SSL_VERIFY_NONE }
         )
-      )
+        )
     {
         croak "Couldn't start TLS: " . IO::Socket::SSL::errstr . "\n";
     }
@@ -175,7 +179,7 @@ sub auth_MD5 {
         croak "Cannot authenticate via CRAM-MD5: $num $txt\n";
     }
     my $ticket = decode_base64($txt)
-      or croak "Unable to decode ticket";
+        or croak "Unable to decode ticket";
     my $md5_pass = hmac_md5_hex( $ticket, $me->{Password} );
     $me->_command( encode_base64( $me->{User} . " " . $md5_pass, "" ) );
     ( $num, $txt ) = $me->_response();
@@ -190,7 +194,9 @@ sub auth_PLAIN {
     my $user = $me->{User};
     my $pass = $me->{Password};
     $me->_command(
-        sprintf( "AUTH PLAIN %s", encode_base64( "$user\0$user\0$pass", "" ) )
+        sprintf(
+            "AUTH PLAIN %s", encode_base64( "$user\0$user\0$pass", "" )
+        )
     );
     my ( $num, $txt ) = $me->_response();
     if ( not $num == 235 ) {
@@ -208,7 +214,7 @@ sub _addr {
     "<$addr>";
 }
 
-# send the MAIL FROM: <addr> command
+# send the MAIL FROM:<addr> command (RFC 5321, 821)
 sub mail {
     my $me   = shift;
     my $from = shift;
@@ -219,12 +225,12 @@ sub mail {
     }
 }
 
-# send the RCPT TO: <addr> command
+# send the RCPT TO:<addr> command (RFC 5321, 821)
 sub recipient {
     my $me = shift;
 
     my $addr;
-    foreach $addr (@_) {
+    foreach my $addr (@_) {
         $me->_command( "RCPT TO:" . _addr($addr) );
         my ( $num, $txt ) = $me->_response();
         if ( not $num == 250 ) {
@@ -329,7 +335,7 @@ sub quit {
     my ( $num, $txt ) = $me->_response();
     if ( not $num == 221 ) {
         croak
-          "An error occurred disconnecting from the mail server: $num $txt\n";
+            "An error occurred disconnecting from the mail server: $num $txt\n";
     }
 }
 
@@ -341,11 +347,11 @@ __END__
 
 =head1 NAME
 
-Net::SMTP::TLS::ButMaintained - An SMTP client supporting TLS and AUTH
+Net::SMTP::TLS::ButMaintained - An SMTP client supporting TLS and AUTH (DEPRECATED, use Net::SMTPS instead)
 
 =head1 VERSION
 
-version 0.23
+version 0.24
 
 =head1 SYNOPSIS
 
@@ -365,7 +371,7 @@ version 0.23
 
 =head1 DESCRIPTION
 
-B<DEPERCATED!>, Please use L<Net::SMTPS> instead.
+B<DEPRECATED!>, Please use L<Net::SMTPS> instead.
 
 B<Net::SMTP::TLS::ButMaintained> is forked from L<Net::SMTP::TLS>. blame C<Evan Carroll> for the idea. :)
 

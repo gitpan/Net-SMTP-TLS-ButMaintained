@@ -1,8 +1,9 @@
 NAME
     Net::SMTP::TLS::ButMaintained - An SMTP client supporting TLS and AUTH
+    (DEPRECATED, use Net::SMTPS instead)
 
 VERSION
-    version 0.23
+    version 0.24
 
 SYNOPSIS
      use Net::SMTP::TLS::ButMaintained;
@@ -20,7 +21,7 @@ SYNOPSIS
      $mailer->quit;
 
 DESCRIPTION
-    DEPERCATED!, Please use Net::SMTPS instead.
+    DEPRECATED!, Please use Net::SMTPS instead.
 
     Net::SMTP::TLS::ButMaintained is forked from Net::SMTP::TLS. blame "Evan
     Carroll" for the idea. :)

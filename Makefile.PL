@@ -9,7 +9,7 @@ use ExtUtils::MakeMaker 6.30;
 
 
 my %WriteMakefileArgs = (
-  "ABSTRACT" => "An SMTP client supporting TLS and AUTH",
+  "ABSTRACT" => "An SMTP client supporting TLS and AUTH (DEPRECATED, use Net::SMTPS instead)",
   "AUTHOR" => "Alexander Christian Westholm <awestholm at verizon dawt net>, Fayland Lam <fayland\@gmail.com>",
   "BUILD_REQUIRES" => {},
   "CONFIGURE_REQUIRES" => {
@@ -28,7 +28,7 @@ my %WriteMakefileArgs = (
     "Net::SSLeay" => 0
   },
   "TEST_REQUIRES" => {},
-  "VERSION" => "0.23",
+  "VERSION" => "0.24",
   "test" => {
     "TESTS" => "t/*.t"
   }
